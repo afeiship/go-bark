@@ -3,6 +3,6 @@
 
 ## installation
 ```shell
-# public
-npm i -g @afeiship/diary-cli
+git clone git@github.com:afeiship/diary-cli.git
+yarn && yarn link
 ```
