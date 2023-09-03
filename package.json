@@ -1,14 +1,44 @@
 {
-  "name": "@jswork/nest-notes",
+  "name": "@afeiship/diary-cli",
   "version": "1.0.0",
-  "description": "Nest notes.",
-  "homepage": "https://github.com/afeiship/nest-notes",
-  "author": {
-    "name": "afeiship",
-    "email": "1290657123@qq.com"
+  "private": true,
+  "description": "My diary cli tools.",
+  "bin": {
+    "diary": "./bin/run"
   },
+  "scripts": {
+    "release": "release-it"
+  },
+  "main": "index.js",
   "license": "MIT",
+  "dependencies": {
+    "@jswork/next": "^1.1.14",
+    "@jswork/next-tmpl": "^1.0.7",
+    "@jswork/simple-date-format": "^1.0.4",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.0",
+    "esm": "^3.2.25",
+    "globby": "^11.1.0",
+    "node-fetch": "2.6.7",
+    "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-load-plugins": "^2.0.5",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0"
+  },
+  "keywords": [
+    "boilerplate",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afeiship/boilerplate-cli.git"
+  },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org"
   }
 }

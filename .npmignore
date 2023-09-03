@@ -4,17 +4,6 @@
 **/node_modules
 test
 __tests__
-src
-build
-gulpfile.js
-rollup.config.js
-
 .editorconfig
+.release-it.json
 .prettierrc
-
-# vscode
-.vscode
-.history
-.github
-api
-docs
