@@ -4,7 +4,7 @@
 ## meta
 - 日期: {date_cn}（{week}）
 - 地点: {city}
-- 天气: {wea}，温度：{tem_night}°C - {tem_day}°C，PM2.5：{air}
+- 天气: {wea}，温度：{tem_night}°C - {tem_day}°C，空气质量：{air}
 
 ## content
 ~~~
