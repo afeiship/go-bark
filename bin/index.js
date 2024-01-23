@@ -23,8 +23,8 @@ program.version(version);
 program.option('-f, --force', 'force to create').parse(process.argv);
 
 /**
- * @help: jsc -h
- * @description: jsc -f
+ * @help: diary -h
+ * @description: diary -f
  */
 
 class CliApp {

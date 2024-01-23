@@ -6,6 +6,7 @@
 # clone the template
 tiged git@github.com:aric-tpls/js-cli.git
 replace-in-files --string diary-cli --replacement $(pwd | awk -F'/' '{printf $NF}') *
+replace-in-files --string "jsc" --replacement "your-name" *
 
 # update the package.json
 {
