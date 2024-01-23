@@ -8,8 +8,8 @@ import fs from 'fs';
 import os from 'os';
 import '@jswork/next-tmpl';
 
-const DIRNAME = new URL('../', import.meta.url).pathname;
-const pkg = loadJsonFileSync(join(DIRNAME, 'package.json'));
+const __dirname = new URL('../', import.meta.url).pathname;
+const pkg = loadJsonFileSync(join(__dirname, 'package.json'));
 const program = new Command();
 const API_URL = 'https://www.yiketianqi.com/free/day';
 const DIARY_ROOT = os.homedir() + '/github/diary';
@@ -37,7 +37,7 @@ class CliApp {
       date_full: sdf('YYYY年MM月DD日 HH时mm分ss秒'),
     };
 
-    const tmplPath = join(DIRNAME, 'bin/templates/item.md');
+    const tmplPath = join(__dirname, 'bin/templates/item.md');
     const tmplContent = fs.readFileSync(tmplPath).toString();
     const content = nx.tmpl(tmplContent, { ...res, ...date });
     const targetDir = `${DIARY_ROOT}/${sdf('YYYY/YYYY-MM')}`;
