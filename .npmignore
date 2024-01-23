@@ -1,9 +1,0 @@
-.idea
-.DS_Store
-**/npm-debug.log
-**/node_modules
-test
-__tests__
-.editorconfig
-.release-it.json
-.prettierrc
