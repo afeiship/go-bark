@@ -8,6 +8,7 @@
     "diary": "./bin/index.js"
   },
   "scripts": {
+    "dev": "node ./bin/index.js",
     "release": "release-it"
   },
   "keywords": ["cli", "javascript", "templates"],

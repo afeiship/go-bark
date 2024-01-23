@@ -14,3 +14,8 @@ package-lock.json
 
 # python cache
 __pycache__
+
+
+# yarn-link-folder
+@afeiship
+@jswork

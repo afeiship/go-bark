@@ -6,7 +6,6 @@ import { loadJsonFileSync } from 'load-json-file';
 import sdf from '@jswork/simple-date-format';
 import fs from 'fs';
 import os from 'os';
-import { join } from 'path';
 import '@jswork/next-tmpl';
 
 const pkg = loadJsonFileSync('./package.json');
@@ -19,7 +18,7 @@ const getWeather = async () => {
   return await res.json();
 };
 
-program.version(version);
+program.version(pkg.version);
 program.option('-f, --force', 'force to create').parse(process.argv);
 
 /**
@@ -28,16 +27,16 @@ program.option('-f, --force', 'force to create').parse(process.argv);
  */
 
 class CliApp {
-  run() {
+  async run() {
     const res = await getWeather();
     const { force } = program.opts();
     const date = {
       date_std: sdf('YYYY-MM-DD'),
       date_cn: sdf('YYYY年MM月DD日'),
-      date_full: sdf('YYYY年MM月DD日 HH时mm分ss秒')
+      date_full: sdf('YYYY年MM月DD日 HH时mm分ss秒'),
     };
 
-    const tmplPath = join(__dirname, './templates/item.md');
+    const tmplPath = join('bin', 'templates/item.md');
     const tmplContent = fs.readFileSync(tmplPath).toString();
     const content = nx.tmpl(tmplContent, { ...res, ...date });
     const targetDir = `${DIARY_ROOT}/${sdf('YYYY/YYYY-MM')}`;
