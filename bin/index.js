@@ -6,10 +6,13 @@ import { loadJsonFileSync } from 'load-json-file';
 import sdf from '@jswork/simple-date-format';
 import fs from 'fs';
 import os from 'os';
+import { createRequire } from 'node:module';
 import '@jswork/next-tmpl';
 
 const __dirname = new URL('../', import.meta.url).pathname;
-const pkg = loadJsonFileSync(join(__dirname, 'package.json'));
+const require = createRequire(__dirname);
+const pkg = require('./package.json');
+
 const program = new Command();
 const API_URL = 'https://www.yiketianqi.com/free/day';
 const DIARY_ROOT = os.homedir() + '/github/diary';
