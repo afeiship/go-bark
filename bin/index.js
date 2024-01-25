@@ -2,7 +2,6 @@
 
 import { Command } from 'commander';
 import { join } from 'path';
-import { loadJsonFileSync } from 'load-json-file';
 import sdf from '@jswork/simple-date-format';
 import fs from 'fs';
 import os from 'os';

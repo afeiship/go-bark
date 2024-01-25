@@ -30,7 +30,6 @@
     "@jswork/next": "^1.1.14",
     "@jswork/next-tmpl": "^1.0.7",
     "@jswork/simple-date-format": "^1.0.4",
-    "commander": "^11.1.0",
-    "load-json-file": "^7.0.1"
+    "commander": "^11.1.0"
   }
 }
