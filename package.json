@@ -11,7 +11,11 @@
     "dev": "node ./bin/index.js",
     "release": "release-it"
   },
-  "keywords": ["cli", "javascript", "templates"],
+  "keywords": [
+    "cli",
+    "javascript",
+    "templates"
+  ],
   "homepage": "https://js.work",
   "author": {
     "name": "aric",
@@ -26,6 +30,7 @@
     "@jswork/next": "^1.1.14",
     "@jswork/next-tmpl": "^1.0.7",
     "@jswork/simple-date-format": "^1.0.4",
-    "commander": "^11.1.0"
+    "commander": "^11.1.0",
+    "load-json-file": "^7.0.1"
   }
 }
