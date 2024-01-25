@@ -2,7 +2,7 @@
   "name": "@afeiship/diary-cli",
   "private": true,
   "version": "1.0.0",
-  "description": "Cli base on nodejs.",
+  "description": "My diary cli tools.",
   "type": "module",
   "bin": {
     "diary": "./bin/index.js"
