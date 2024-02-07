@@ -13,12 +13,16 @@ const require = createRequire(__dirname);
 const pkg = require('./package.json');
 
 const program = new Command();
-const API_URL = 'https://www.yiketianqi.com/free/day';
+const API_URL = 'https://v1.yiketianqi.com/free/day';
 const DIARY_ROOT = os.homedir() + '/github/diary';
 const getWeather = async () => {
   const url = `${API_URL}?appid=71122974&appsecret=1iDE4Irf&unescape=1`;
   const res = await fetch(url);
-  return await res.json();
+  try {
+    return await res.json();
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 program.version(pkg.version);
