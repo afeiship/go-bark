@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "node ./bin/index.js",
+    "build":"bun build ./bin/index.js --compile --outfile diary",
     "release": "release-it"
   },
   "keywords": [
