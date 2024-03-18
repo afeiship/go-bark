@@ -13,11 +13,13 @@ const require = createRequire(__dirname);
 const pkg = require('./package.json');
 
 const program = new Command();
-const API_URL = 'https://v1.yiketianqi.com/free/day';
+const API_URL = 'https://api.map.baidu.com/weather/v1/';
 const DIARY_ROOT = os.homedir() + '/github/diary';
+const BAIDU_TQ_AK = '4YWYgyKNKfRO10LBoI99x4ZXtUz6tiuY';
+
 const getWeather = async () => {
-  const url = `${API_URL}?appid=71122974&appsecret=1iDE4Irf&unescape=1`;
-  const res = await fetch(url);
+  const url = `${API_URL}?district_id=310100&data_type=all&ak=${BAIDU_TQ_AK}`;
+  const res = await fetch(url)
   try {
     return await res.json();
   } catch (error) {
@@ -45,7 +47,9 @@ class CliApp {
 
     const tmplPath = join(__dirname, 'bin/templates/item.md');
     const tmplContent = fs.readFileSync(tmplPath).toString();
-    const content = nx.tmpl(tmplContent, { ...res, ...date });
+    const weatherRes = nx.get(res, 'result.forecasts[0]');
+    console.log('wea: ', weatherRes);
+    const content = nx.tmpl(tmplContent, { ...weatherRes, ...date });
     const targetDir = `${DIARY_ROOT}/${sdf('YYYY/YYYY-MM')}`;
     const targetFile = `${targetDir}/${sdf('YYYY-MM-DD')}.md`;
     const logprefix = sdf('datetime');
