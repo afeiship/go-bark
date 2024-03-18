@@ -48,7 +48,6 @@ class CliApp {
     const tmplPath = join(__dirname, 'bin/templates/item.md');
     const tmplContent = fs.readFileSync(tmplPath).toString();
     const weatherRes = nx.get(res, 'result.forecasts[0]');
-    console.log('wea: ', weatherRes);
     const content = nx.tmpl(tmplContent, { ...weatherRes, ...date });
     const targetDir = `${DIARY_ROOT}/${sdf('YYYY/YYYY-MM')}`;
     const targetFile = `${targetDir}/${sdf('YYYY-MM-DD')}.md`;
