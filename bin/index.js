@@ -17,6 +17,10 @@ const API_URL = 'https://api.map.baidu.com/weather/v1/';
 const DIARY_ROOT = os.homedir() + '/github/diary';
 const BAIDU_TQ_AK = '4YWYgyKNKfRO10LBoI99x4ZXtUz6tiuY';
 
+// district_id
+// 310100: 上海市
+// 420100: 武汉市
+
 const getWeather = async () => {
   const url = `${API_URL}?district_id=310100&data_type=all&ak=${BAIDU_TQ_AK}`;
   const res = await fetch(url)
