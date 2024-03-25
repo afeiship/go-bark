@@ -15,7 +15,7 @@ const pkg = require('./package.json');
 const program = new Command();
 const API_URL = 'https://api.map.baidu.com/weather/v1/';
 const DIARY_ROOT = os.homedir() + '/github/diary';
-const BAIDU_TQ_AK = '4YWYgyKNKfRO10LBoI99x4ZXtUz6tiuY';
+const BAIDU_TQ_AK = process.env.BAIDU_TIANQI_AK
 
 // district_id
 // 310100: 上海市
