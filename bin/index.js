@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
+import { Command, Option } from 'commander';
 import { join } from 'path';
 import sdf from '@jswork/simple-date-format';
 import fs from 'fs';
@@ -27,6 +27,7 @@ const cities = {
 
 const getWeather = async (city) => {
   const code = cities[city] || 310100;
+  console.log(`[getWeather]: 🌈 Fetching weather of ${city}...`);
   const url = `${API_URL}?district_id=${code}&data_type=all&ak=${BAIDU_TQ_AK}`;
   const res = await fetch(url)
   try {
@@ -39,7 +40,7 @@ const getWeather = async (city) => {
 program.version(pkg.version);
 program
   .option('-f, --force', 'force to create')
-  .option('-w, --wuhan', 'weather of wuhan')
+  .addOption(new Option('-c, --city <string>', 'weather of city').choices(['wuhan', 'shanghai']))
   .parse(process.argv);
 
 /**
@@ -49,8 +50,8 @@ program
 
 class CliApp {
   async run() {
-    const { force, wuhan } = program.opts();
-    const res = await getWeather(wuhan);
+    const { force, city: _city } = program.opts();
+    const res = await getWeather(_city);
     const date = {
       date_std: sdf('YYYY-MM-DD'),
       date_cn: sdf('YYYY年MM月DD日'),
