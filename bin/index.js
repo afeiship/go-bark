@@ -20,9 +20,14 @@ const BAIDU_TQ_AK = process.env.BAIDU_TIANQI_AK
 // district_id
 // 310100: 上海市
 // 420100: 武汉市
+const cities = {
+  'wuhan': 420100,
+  'shanghai': 310100
+}
 
-const getWeather = async () => {
-  const url = `${API_URL}?district_id=310100&data_type=all&ak=${BAIDU_TQ_AK}`;
+const getWeather = async (city) => {
+  const code = cities[city] || 310100;
+  const url = `${API_URL}?district_id=${code}&data_type=all&ak=${BAIDU_TQ_AK}`;
   const res = await fetch(url)
   try {
     return await res.json();
@@ -32,7 +37,10 @@ const getWeather = async () => {
 };
 
 program.version(pkg.version);
-program.option('-f, --force', 'force to create').parse(process.argv);
+program
+  .option('-f, --force', 'force to create')
+  .option('-w, --wuhan', 'weather of wuhan')
+  .parse(process.argv);
 
 /**
  * @help: diary -h
@@ -41,8 +49,8 @@ program.option('-f, --force', 'force to create').parse(process.argv);
 
 class CliApp {
   async run() {
-    const res = await getWeather();
-    const { force } = program.opts();
+    const { force, wuhan } = program.opts();
+    const res = await getWeather(wuhan);
     const date = {
       date_std: sdf('YYYY-MM-DD'),
       date_cn: sdf('YYYY年MM月DD日'),
