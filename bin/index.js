@@ -26,7 +26,7 @@ const cities = {
 }
 
 const getWeather = async (city) => {
-  const _city = city || 'shanhai';
+  const _city = city || 'shanghai';
   const code = cities[_city];
   console.log(`[getWeather]: 🌈 Fetching weather of ${_city}...`);
   const url = `${API_URL}?district_id=${code}&data_type=all&ak=${BAIDU_TQ_AK}`;
