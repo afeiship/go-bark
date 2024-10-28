@@ -15,22 +15,22 @@ const pkg = require('./package.json');
 const program = new Command();
 const API_URL = 'https://api.map.baidu.com/weather/v1/';
 const DIARY_ROOT = os.homedir() + '/github/diary';
-const BAIDU_TQ_AK = process.env.BAIDU_TIANQI_AK
+const BAIDU_TQ_AK = process.env.BAIDU_TIANQI_AK;
 
 // district_id
 // 310100: 上海市
 // 420100: 武汉市
 const cities = {
-  'wuhan': 420100,
-  'shanghai': 310100
-}
+  wuhan: 420100,
+  shanghai: 310100,
+};
 
 const getWeather = async (city) => {
   const _city = city || 'shanghai';
   const code = cities[_city];
   console.log(`[getWeather]: 🌈 Fetching weather of ${_city}...`);
   const url = `${API_URL}?district_id=${code}&data_type=all&ak=${BAIDU_TQ_AK}`;
-  const res = await fetch(url)
+  const res = await fetch(url);
   try {
     return await res.json();
   } catch (error) {
