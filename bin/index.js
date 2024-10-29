@@ -23,6 +23,8 @@ const BAIDU_TQ_AK = process.env.BAIDU_TIANQI_AK;
 const cities = {
   wuhan: 420100,
   shanghai: 310100,
+  wh: 420100,
+  sh: 310100,
 };
 
 const getWeather = async (city) => {
