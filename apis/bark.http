@@ -1,0 +1,8 @@
+@sdk_key = {{$processEnv BARK_SDK_KEY}}
+POST https://api.day.app/{{sdk_key}}
+Content-Type: application/json
+
+{
+    "title": "just a bark title",
+    "body": "just a bark body"
+}
