@@ -1,36 +1,11 @@
 {
-  "name": "@afeiship/diary-cli",
+  "name": "go-bark",
   "private": true,
   "version": "1.0.0",
-  "description": "My diary cli tools.",
-  "type": "module",
-  "bin": {
-    "diary": "./bin/index.js"
-  },
-  "scripts": {
-    "dev": "node ./bin/index.js",
-    "build":"bun build ./bin/index.js --compile --outfile diary",
-    "release": "release-it"
-  },
-  "keywords": [
-    "cli",
-    "javascript",
-    "templates"
-  ],
-  "homepage": "https://js.work",
-  "author": {
-    "name": "aric",
-    "email": "1290657123@qq.com"
-  },
+  "description": "Bark sdk for golang.",
   "license": "MIT",
-  "generator": "@jswork/generator-github",
-  "devDependencies": {
-    "prettier": "^3.2.4"
-  },
-  "dependencies": {
-    "@jswork/next": "^1.1.14",
-    "@jswork/next-tmpl": "^1.0.7",
-    "@jswork/simple-date-format": "^1.0.4",
-    "commander": "^11.1.0"
+  "scripts": {
+    "test": "go test __tests__/*.go -v",
+    "release": "release-it"
   }
 }

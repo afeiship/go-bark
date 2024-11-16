@@ -1,23 +1,2 @@
 node_modules
-bower_components
-coverage
-npm-debug.log
-yarn.lock
-package-lock.json
-pnpm-lock.yaml
 .DS_Store
-
-
-# vscode
-.vscode
-.history
-.idea
-
-# python cache
-__pycache__
-
-
-# yarn-link-folder
-@afeiship
-@jswork
-diary
