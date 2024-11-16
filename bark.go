@@ -47,7 +47,7 @@ const (
 	Update             SoundType = "update"
 )
 
-type MessageBody struct {
+type Message struct {
 	Title    string    `json:"title"`
 	Body     string    `json:"body"`
 	Badge    int       `json:"badge"`
@@ -78,7 +78,7 @@ func NewClient(sdkKey ...string) *Client {
 	}
 }
 
-func (c *Client) Notify(body *MessageBody) (string, error) {
+func (c *Client) Notify(body *Message) (string, error) {
 	apiURL := fmt.Sprintf("%s/%s", baseURL, c.SdkKey)
 	return fetch.Post(apiURL, &fetch.Config{
 		DataType: "json",
@@ -99,7 +99,7 @@ func Msg(args ...string) {
 		body = args[1]
 	}
 
-	opts := &MessageBody{
+	opts := &Message{
 		Title: title,
 		Body:  body,
 	}

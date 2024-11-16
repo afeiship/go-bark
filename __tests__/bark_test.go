@@ -11,7 +11,7 @@ func TestNotify(f *testing.T) {
 	client := bark.NewClient()
 
 	res, _ := client.Notify(
-		&bark.MessageBody{
+		&bark.Message{
 			Title: "Hello",
 			Body:  "This is a test message from go-bark",
 		},

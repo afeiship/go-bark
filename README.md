@@ -23,7 +23,7 @@ func main() {
 	// more options
 	client := bark.NewClient()
 	res, _ := client.Notify(
-		&bark.MessageBody{
+		&bark.Message{
 			Title: "Hello",
 			Body:  "This is a test message from go-bark",
 		},
