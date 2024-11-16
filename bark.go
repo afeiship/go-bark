@@ -10,19 +10,6 @@ import (
 
 // @references: https://github.com/afeiship/bark-jssdk/blob/master/src/typing.ts
 
-// curl -X "POST" "https://api.day.app/your_key" \
-//      -H 'Content-Type: application/json; charset=utf-8' \
-//      -d $'{
-//   "body": "Test Bark Server",
-//   "title": "Test Title",
-//   "badge": 1,
-//   "category": "myNotificationCategory",
-//   "sound": "minuet.caf",
-//   "icon": "https://day.app/assets/images/avatar.jpg",
-//   "group": "test",
-//   "url": "https://mritd.com"
-// }'
-
 type SoundType string
 
 const (
@@ -99,14 +86,25 @@ func (c *Client) Notify(body *MessageBody) (string, error) {
 	})
 }
 
-func Msg(title, body string) {
+func Msg(args ...string) {
+	if len(args) == 0 {
+		log.Fatalf("Msg requires at least one argument")
+	}
+
+	var title, body string
+	if len(args) == 1 {
+		body = args[0]
+	} else if len(args) >= 2 {
+		title = args[0]
+		body = args[1]
+	}
+
 	opts := &MessageBody{
 		Title: title,
 		Body:  body,
 	}
 
 	_, err := NewClient().Notify(opts)
-
 	if err != nil {
 		log.Fatalf("Failed to send notification: %v", err)
 	}

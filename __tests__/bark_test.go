@@ -22,5 +22,10 @@ func TestNotify(f *testing.T) {
 
 // go test ./__tests__ -run ^TestMsg$ -v
 func TestMsg(t *testing.T) {
-	bark.Msg("Hello, go-bark", "This is a test message from go-bark")
+	bark.Msg("Hello, aric", "This is a test message from go-bark with title")
+}
+
+// go test ./__tests__ -run ^TestMsgOnlyBody -v
+func TestMsgOnlyBody(t *testing.T) {
+	bark.Msg("This is a test message from go-bark-only-body")
 }
