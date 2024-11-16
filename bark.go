@@ -2,6 +2,7 @@ package bark
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/afeiship/go-fetch"
@@ -72,15 +73,38 @@ type MessageBody struct {
 
 const baseURL = "https://api.day.app"
 
-var apiKey = os.Getenv("BARK_SDK_KEY")
+// Client is the client for bark sdk
+type Client struct {
+	SdkKey string
+}
 
-func Notify(body *MessageBody) {
-	apiURL := fmt.Sprintf("%s/%s", baseURL, apiKey)
-	fetch.Post(apiURL, &fetch.Config{
+// NewClient creates a new client with the given sdk key
+func NewClient(sdkKey ...string) *Client {
+	var key string
+	if len(sdkKey) > 0 && sdkKey[0] != "" {
+		key = sdkKey[0]
+	} else {
+		key = os.Getenv("BARK_SDK_KEY")
+	}
+	return &Client{
+		SdkKey: key,
+	}
+}
+
+func (c *Client) Notify(body *MessageBody) (string, error) {
+	apiURL := fmt.Sprintf("%s/%s", baseURL, c.SdkKey)
+	return fetch.Post(apiURL, &fetch.Config{
 		DataType: "json",
 		Body:     body,
-		Headers: map[string]string{
-			"Content-Type": "application/json",
-		},
 	})
+}
+
+func Msg(title, body string) {
+	_, err := NewClient().Notify(&MessageBody{
+		Title: title,
+		Body:  body,
+	})
+	if err != nil {
+		log.Fatalf("Failed to send notification: %v", err)
+	}
 }
