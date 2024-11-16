@@ -1,7 +1,7 @@
 {
   "name": "go-bark",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bark sdk for golang.",
   "license": "MIT",
   "scripts": {
