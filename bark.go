@@ -100,10 +100,13 @@ func (c *Client) Notify(body *MessageBody) (string, error) {
 }
 
 func Msg(title, body string) {
-	_, err := NewClient().Notify(&MessageBody{
+	opts := &MessageBody{
 		Title: title,
 		Body:  body,
-	})
+	}
+
+	_, err := NewClient().Notify(opts)
+
 	if err != nil {
 		log.Fatalf("Failed to send notification: %v", err)
 	}
