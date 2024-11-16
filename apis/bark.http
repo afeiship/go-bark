@@ -8,3 +8,15 @@ Content-Type: application/json
     "title": "just a bark title",
     "body": "just a bark body"
 }
+
+
+### use push
+# sdk_key not work, use real device_key instead
+POST https://api.day.app/push
+Content-Type: application/json; charset=utf-8
+
+{
+    "title": "just a bark title",
+    "body": "just a bark body",
+    "device_key": "{{sdk_key}}"
+}
