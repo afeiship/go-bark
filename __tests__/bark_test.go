@@ -6,6 +6,9 @@ import (
 	"github.com/afeiship/go-bark"
 )
 
-func TestSayHi(f *testing.T) {
-	bark.SayHi()
+func TestNotify(f *testing.T) {
+	bark.Notify(&bark.MessageBody{
+		Title: "Hello",
+		Body:  "This is a test message from go-bark",
+	})
 }
